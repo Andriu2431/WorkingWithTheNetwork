@@ -15,6 +15,12 @@
 		95E3F427284E0CBD00541667 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E3F426284E0CBD00541667 /* DataProvider.swift */; };
 		95E3F42B2851EA8000541667 /* AlamofireNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E3F42A2851EA8000541667 /* AlamofireNetworkRequest.swift */; };
 		95F9D82D285536F30009B017 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 95F9D82C285536F30009B017 /* .gitignore */; };
+		95F9D82F28561B370009B017 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9D82E28561B370009B017 /* LoginViewController.swift */; };
+		95F9D83228561B800009B017 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9D83128561B800009B017 /* Extensions.swift */; };
+		95F9D8772858A7240009B017 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9D8762858A7240009B017 /* UserProfileVC.swift */; };
+		95F9D87F285A5B880009B017 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95F9D87E285A5B880009B017 /* GoogleService-Info.plist */; };
+		95F9D881285A66550009B017 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9D880285A66550009B017 /* UserProfile.swift */; };
+		95F9D883285B492C0009B017 /* CurrentUser .swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9D882285B492C0009B017 /* CurrentUser .swift */; };
 		A806CF94210B4EA300574064 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A806CF93210B4EA300574064 /* ImageViewController.swift */; };
 		A8255C80214103450074F6D0 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8255C7F214103450074F6D0 /* WebViewController.swift */; };
 		A8255C8421410AFA0074F6D0 /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8255C8321410AFA0074F6D0 /* CoursesViewController.swift */; };
@@ -37,6 +43,13 @@
 		95E3F426284E0CBD00541667 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		95E3F42A2851EA8000541667 /* AlamofireNetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkRequest.swift; sourceTree = "<group>"; };
 		95F9D82C285536F30009B017 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		95F9D82E28561B370009B017 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		95F9D83128561B800009B017 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		95F9D83328561CF30009B017 /* Networking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Networking.entitlements; sourceTree = "<group>"; };
+		95F9D8762858A7240009B017 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
+		95F9D87E285A5B880009B017 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		95F9D880285A66550009B017 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		95F9D882285B492C0009B017 /* CurrentUser .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrentUser .swift"; sourceTree = "<group>"; };
 		A806CF93210B4EA300574064 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		A8255C7F214103450074F6D0 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		A8255C8321410AFA0074F6D0 /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +98,8 @@
 		95E3F41F284D0B3700541667 /* ViewControlers */ = {
 			isa = PBXGroup;
 			children = (
+				95F9D82E28561B370009B017 /* LoginViewController.swift */,
+				95F9D8762858A7240009B017 /* UserProfileVC.swift */,
 				95E3F418284CF12400541667 /* MainViewController.swift */,
 				A806CF93210B4EA300574064 /* ImageViewController.swift */,
 				A8255C8321410AFA0074F6D0 /* CoursesViewController.swift */,
@@ -108,6 +123,8 @@
 				A895579D214278DB00355357 /* Course.swift */,
 				A895579F2142808400355357 /* WebsiteDescription.swift */,
 				95E3F423284D0E8200541667 /* ImageProperties.swift */,
+				95F9D880285A66550009B017 /* UserProfile.swift */,
+				95F9D882285B492C0009B017 /* CurrentUser .swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -127,6 +144,14 @@
 				95E3F426284E0CBD00541667 /* DataProvider.swift */,
 			);
 			path = BackgroundTask;
+			sourceTree = "<group>";
+		};
+		95F9D83028561B660009B017 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				95F9D83128561B800009B017 /* Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		A83C30142108401A00592AE4 = {
@@ -152,14 +177,17 @@
 			isa = PBXGroup;
 			children = (
 				A83C30202108401A00592AE4 /* AppDelegate.swift */,
+				95F9D83328561CF30009B017 /* Networking.entitlements */,
 				95E3F425284E0C9700541667 /* BackgroundTask */,
 				95E3F41E284D0B2B00541667 /* Network */,
 				95E3F41F284D0B3700541667 /* ViewControlers */,
 				95E3F420284D0B4200541667 /* CastomCell */,
 				95E3F421284D0B4B00541667 /* Model */,
 				95E3F422284D0B5D00541667 /* Views */,
+				95F9D83028561B660009B017 /* Extensions */,
 				A83C30272108401B00592AE4 /* Assets.xcassets */,
 				A83C302C2108401B00592AE4 /* Info.plist */,
+				95F9D87E285A5B880009B017 /* GoogleService-Info.plist */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -235,6 +263,7 @@
 			files = (
 				95F9D82D285536F30009B017 /* .gitignore in Resources */,
 				A83C302B2108401B00592AE4 /* LaunchScreen.storyboard in Resources */,
+				95F9D87F285A5B880009B017 /* GoogleService-Info.plist in Resources */,
 				A83C30282108401B00592AE4 /* Assets.xcassets in Resources */,
 				A83C30262108401A00592AE4 /* Main.storyboard in Resources */,
 			);
@@ -289,19 +318,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95F9D82F28561B370009B017 /* LoginViewController.swift in Sources */,
 				95E3F41B284CF13700541667 /* CollectionViewCell.swift in Sources */,
 				A895579E214278DB00355357 /* Course.swift in Sources */,
 				95E3F42B2851EA8000541667 /* AlamofireNetworkRequest.swift in Sources */,
 				A89557A02142808500355357 /* WebsiteDescription.swift in Sources */,
+				95F9D883285B492C0009B017 /* CurrentUser .swift in Sources */,
 				95E3F424284D0E8200541667 /* ImageProperties.swift in Sources */,
 				95E3F41D284CF76000541667 /* NetworkManager.swift in Sources */,
+				95F9D8772858A7240009B017 /* UserProfileVC.swift in Sources */,
 				A806CF94210B4EA300574064 /* ImageViewController.swift in Sources */,
 				95E3F427284E0CBD00541667 /* DataProvider.swift in Sources */,
 				A8255C80214103450074F6D0 /* WebViewController.swift in Sources */,
+				95F9D83228561B800009B017 /* Extensions.swift in Sources */,
 				A83C30212108401A00592AE4 /* AppDelegate.swift in Sources */,
 				95E3F419284CF12400541667 /* MainViewController.swift in Sources */,
 				A8255C8621410DFE0074F6D0 /* TableViewCell.swift in Sources */,
 				A8255C8421410AFA0074F6D0 /* CoursesViewController.swift in Sources */,
+				95F9D881285A66550009B017 /* UserProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +482,7 @@
 			baseConfigurationReference = 8EE79CA4A3B047570D4B88B8 /* Pods-Networking.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Networking/Networking.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 96Z9K772Z9;
 				INFOPLIST_FILE = Networking/Info.plist;
@@ -468,6 +503,7 @@
 			baseConfigurationReference = 685CFA0A5D6E49D6A47A100A /* Pods-Networking.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Networking/Networking.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 96Z9K772Z9;
 				INFOPLIST_FILE = Networking/Info.plist;

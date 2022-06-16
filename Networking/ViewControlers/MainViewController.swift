@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import FBSDKLoginKit
 
 enum Actions: String, CaseIterable {
     case downloadImage = "Download Image"
@@ -44,7 +45,7 @@ class MainViewController: UICollectionViewController {
     //Після того коли скачається файл ми отримуємо силку на файл. В цей момент апка перезапускається в фоні та викликає viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         registerForNotification()
         
         //Присвоїмо силку на файл в властивість
@@ -56,6 +57,7 @@ class MainViewController: UICollectionViewController {
             self.alert.dismiss(animated: false)
             self.postNotification()
         }
+        checkLoggedIn()
     }
     
     //Метод для арелт контроллера
@@ -218,5 +220,27 @@ extension MainViewController {
         //Запит
         let request = UNNotificationRequest(identifier: "TransferComplete", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+}
+
+//MARK: Facebook SDK
+
+extension MainViewController {
+    
+    //Для перевірки чи користувач зарейстрований чи ні
+    private func checkLoggedIn() {
+        
+        //Якщо токена немає, то презентуєм екран рейстрації
+        if AccessToken.current == nil {
+            DispatchQueue.main.async {
+                //Екземпляр сторіборда
+                let storyBord = UIStoryboard(name: "Main", bundle: nil)
+                //Контролер по ідентифікатору
+                let logitVC = storyBord.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                
+                self.present(logitVC, animated: true)
+                return
+            }
+        }
     }
 }
