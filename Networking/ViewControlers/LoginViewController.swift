@@ -3,10 +3,13 @@ import UIKit
 import FBSDKLoginKit
 import FirebaseAuth
 import FirebaseDatabase
+import GoogleSignIn
 
 //Рейстрація користувача
 
 class LoginViewController: UIViewController {
+    
+    let signInConfig = GIDConfiguration(clientID: "143552813601-cpts138oi7d6inqihalojdlp820bdes1.apps.googleusercontent.com")
     
     //Екземпляр структури, яка тримає данні користувача з фестбукуʼ
     var userProfile: UserProfile?
@@ -31,22 +34,29 @@ class LoginViewController: UIViewController {
         loginButton.addTarget(self, action: #selector(handleCustomFBLogin), for: .touchUpInside)
         return loginButton
     }()
-
+    
+    //Кнопка для рейстрації Google
+    lazy var googleLoginButton: GIDSignInButton = {
+        let loginButton = GIDSignInButton()
+        loginButton.frame = CGRect(x: 32, y: 360 + 80 + 80, width: view.frame.width - 64, height: 50)
+        loginButton.addTarget(self, action: #selector(googleSignInButton), for: .touchUpInside)
+        return loginButton
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //Задаємо колір view
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
-        
+        currentUserRegister()
         setupViews()
-        
     }
     
     private func setupViews() {
         view.addSubview(fbLoginButton)
         view.addSubview(customFbLoginButton)
+        view.addSubview(googleLoginButton)
     }
-
 }
 
 //MARK: Facebook SDK
@@ -173,5 +183,67 @@ extension LoginViewController: LoginButtonDelegate {
             self.openMainViewController()
         }
     }
+}
+
+//MARK: SDK Google
+
+extension LoginViewController {
     
+    //Метод перевірить чи користувач зарейстрований в системі через google чи ні
+    private func currentUserRegister() {
+        
+        //Перевіряє чи користувач зарейстрований чи ні
+        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+            if error != nil || user == nil {
+                //Цей блок коли користувач nil
+                print("Log out")
+            } else {
+                //Цей блок коли користувач є
+                print("Sign in")
+                if GIDSignIn.sharedInstance.currentUser != nil {
+                    self.openMainViewController()
+                }
+            }
+        }
+    }
+    
+    //Метод для рейстрації по такі кнопки
+    @objc private func googleSignInButton() {
+        
+        //Рейстрація через Google
+        GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
+            
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            print("Successfulyy logged into Google")
+            
+            //Передаємо данні користувача в модель
+            if let userName = user?.profile?.name, let userEmail = user?.profile?.email {
+
+                let userData = ["name": userName, "email": userEmail]
+
+                //Передаємо наш словник в модель
+                self.userProfile = UserProfile(data: userData)
+            }
+            
+            guard let authentication = user?.authentication, let idToken = authentication.idToken  else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
+            
+            //Рейструємо користувача в firebase
+            Auth.auth().signIn(with: credential) { user, error in
+                
+                if let error = error {
+                    print(error)
+                    return
+                }
+                
+                print("Seccessfully logged into Firebase with Google")
+                
+                self.saveInfoFirebase()
+            }
+        }
+    }
 }
